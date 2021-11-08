@@ -1,0 +1,21 @@
+<h1 class="title">Finding all posts</h1>
+<table class="table is-fullwidth is-striped">
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>Title</th>
+      <th>Actions</th>
+      <th>Created Date</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @posts.each do |p| %>
+    <tr>
+      <td><%= p.id %></td>
+      <td><%= p.title %></td>
+      <td><%= link_to 'Edit', post_path(p), class: 'button is-white is-small' %> | <%= link_to 'Delete', post_path(p), method: :delete, class: 'button is-white is-small' %></td>
+      <td><%= time_ago_in_words(p.created_at) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
