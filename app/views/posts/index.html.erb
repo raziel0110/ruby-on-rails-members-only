@@ -4,6 +4,7 @@
     <tr>
       <th>Index</th>
       <th>Title</th>
+      <th>Author</th>
       <th>Actions</th>
       <th>Created Date</th>
     </tr>
@@ -13,7 +14,12 @@
     <tr>
       <td><%= p.id %></td>
       <td><%= p.title %></td>
-      <td><%= link_to 'Edit', edit_post_path(p), class: 'button is-white is-small' %> | <%= link_to 'Delete', post_path(p), method: :delete, class: 'button is-white is-small' %></td>
+      <td><%= p.author %></td>
+      <% if current_user.id == p.user_id %>
+        <td><%= link_to 'Edit', edit_post_path(p), class: 'button is-white is-small' %> | <%= link_to 'Delete', post_path(p), method: :delete, class: 'button is-white is-small' %></td>
+      <% else %>
+        <td></td>
+      <% end %>
       <td><%= time_ago_in_words(p.created_at) %></td>
     </tr>
   <% end %>
