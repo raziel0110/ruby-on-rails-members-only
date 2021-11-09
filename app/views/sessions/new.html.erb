@@ -1,16 +1,9 @@
 <div class="columns">
   <div class="column is-half is-offset-3">
-    <h1 class="title is-5">Register</h1>
+    <h1 class="title is-5">Login</h1>
     <hr class="mb-6">
 
     <%= form_with model: @user do |f| %>
-      <div class="field">
-        <label class="label">Username:</label>
-        <div class="control">
-          <%= f.text_field :username, class: 'input' %>
-        </div>
-      </div>
-
       <div class="field">
         <label class="label">Email:</label>
         <div class="control">

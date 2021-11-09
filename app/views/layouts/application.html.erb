@@ -13,8 +13,34 @@
 
   <body>
     <%= render 'shared/navbar' %>
+
+    <% if flash[:notice]  %>
+      <div class="notification is-success is-light">
+        <button class="delete"></button>
+      <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <% if flash[:error]  %>
+    <div class="notification is-danger is-light">
+      <button class="delete"></button>
+      <%= flash[:error] %>
+    </div>
+  <% end %>
+
     <div class="container mt-6">
       <%= yield %>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+                const $notification = $delete.parentNode;
+
+                $delete.addEventListener('click', () => {
+                    $notification.parentNode.removeChild($notification);
+                });
+            });
+        });
+    </script>
   </body>
 </html>

@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_post, only: %i[show edit update destroy]
   def index
     @posts = Post.all
@@ -49,5 +50,9 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def authenticate_user!
+    redirect_to login_path unless logged_in?
   end
 end
