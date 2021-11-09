@@ -1,0 +1,13 @@
+
+<h1 class="title"></h1>
+<div class="columns">
+  <div class="column is-half is-offset-3">
+    <% @users.each do |u| %>
+      <div>
+        <p><strong><%= u.id %>.</strong>
+          <%= u.username %> | <%= u.email %> |
+          <span><%= link_to 'Delete', user_path(u), method: :delete %></span></p>
+      </div>
+    <% end %>
+  </div>
+</div>
